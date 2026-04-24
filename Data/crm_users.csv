@@ -1,0 +1,85 @@
+user_id,first_name,last_name,email,role,division,region,seniority_level,hire_date,is_active,manager_id,target_deals_per_year
+USR-3000,Laurie,Brown,yshort@brown.com,Junior Agent,TalentEdge,India,1,2018-11-03,1,USR-3072,30
+USR-3001,Mary,Miller,susandavis@hall.com,Talent Agent,TalentEdge,Australia,2,2012-06-14,1,USR-3083,10
+USR-3002,Ashley,Meza,xreese@ray.biz,Senior Talent Agent,TalentEdge,Australia,3,2022-01-24,1,USR-3067,10
+USR-3003,Nicole,Jackson,andreawagner@moore.com,Junior Agent,TalentEdge,Australia,1,2011-02-08,1,USR-3079,25
+USR-3004,Rachel,Pierce,megan66@morris.biz,Junior Agent,TalentEdge,India,1,2016-05-31,1,USR-3083,25
+USR-3005,Katie,Howe,michael77@smith-johnson.com,Agent Director,TalentEdge,Australia,4,2011-03-23,1,,15
+USR-3006,Caitlin,Holmes,adam33@smith-short.com,Junior Agent,TalentEdge,Asia Pacific,1,2012-01-11,1,USR-3048,10
+USR-3007,Samantha,Dixon,clintonstevens@taylor.org,Senior Talent Agent,TalentEdge,Australia,3,2022-04-04,1,USR-3042,25
+USR-3008,John,Scott,christopher69@navarro.com,Agent Director,TalentEdge,Asia Pacific,4,2010-07-24,1,,30
+USR-3009,Laura,Thompson,larsonkevin@stokes.com,Senior Talent Agent,TalentEdge,Asia Pacific,3,2012-01-09,1,USR-3058,15
+USR-3010,Michael,Montoya,hconrad@adkins.com,Talent Agent,TalentEdge,North America,2,2012-07-24,1,USR-3071,20
+USR-3011,Cynthia,Chen,torresblake@cunningham.com,Talent Agent,TalentEdge,Australia,2,2018-08-13,1,USR-3072,30
+USR-3012,Brent,Dennis,wmaddox@johnston.biz,Senior Talent Agent,TalentEdge,Asia Pacific,3,2022-05-06,1,USR-3008,15
+USR-3013,Earl,Rogers,dduncan@ross.com,Agent Director,TalentEdge,Australia,4,2013-05-14,1,,15
+USR-3014,Kathleen,Castillo,tonypearson@hoffman.net,Senior Talent Agent,TalentEdge,North America,3,2019-05-31,1,USR-3013,25
+USR-3015,John,Jones,kmorris@rodriguez.biz,Agent Director,TalentEdge,Europe,4,2012-08-21,0,,15
+USR-3016,Michael,Lee,brittney04@huerta.info,Talent Agent,TalentEdge,Australia,2,2015-09-05,1,USR-3036,25
+USR-3017,Cindy,Alexander,jamesbrooks@farrell.org,Junior Agent,TalentEdge,Australia,1,2010-02-17,1,USR-3083,25
+USR-3018,Sara,Melton,alexander14@ruiz-rivera.net,Senior Content Agent,CreativeMotion,Europe,3,2023-03-17,1,USR-3023,25
+USR-3019,Jason,Payne,ana92@hale.net,Junior Agent,CreativeMotion,Asia Pacific,1,2011-10-13,1,USR-3062,10
+USR-3020,Bradley,Jackson,james94@marshall.com,Senior Content Agent,CreativeMotion,Australia,3,2016-03-28,1,USR-3079,30
+USR-3021,Paul,Nelson,michelle04@hughes.com,Senior Content Agent,CreativeMotion,North America,3,2014-02-23,1,USR-3071,20
+USR-3022,Rebecca,Washington,lopezvincent@castro-marquez.com,Content Agent,CreativeMotion,Europe,2,2010-09-23,1,USR-3082,30
+USR-3023,John,Moreno,tracy20@sutton-kelly.com,Agent Director,CreativeMotion,India,4,2011-12-20,1,,25
+USR-3024,Joel,Good,lisa46@raymond.com,Senior Content Agent,CreativeMotion,Europe,3,2016-05-18,1,USR-3005,30
+USR-3025,Edward,Prince,christopherreyes@salazar.com,Senior Content Agent,CreativeMotion,Asia Pacific,3,2022-12-26,1,USR-3079,10
+USR-3026,Ashley,Simmons,renee57@anderson.com,Content Agent,CreativeMotion,India,2,2017-03-29,1,USR-3023,25
+USR-3027,Michelle,Parker,russellstout@douglas.com,Content Agent,CreativeMotion,Asia Pacific,2,2022-05-07,1,USR-3072,25
+USR-3028,Lonnie,Grant,whitemary@acosta.biz,Senior Content Agent,CreativeMotion,North America,3,2016-02-27,1,USR-3023,25
+USR-3029,Susan,Turner,edwin31@lopez.org,Senior Content Agent,CreativeMotion,Europe,3,2011-04-22,1,USR-3057,30
+USR-3030,Joseph,Bradley,caitlynhall@howard.info,Content Agent,CreativeMotion,Asia Pacific,2,2016-06-10,1,USR-3060,20
+USR-3031,Dennis,Mathis,xjoseph@christian.info,Agent Director,CreativeMotion,Australia,4,2022-11-25,0,,20
+USR-3032,Devin,Lee,ortiztanya@clements-walker.com,Senior Content Agent,CreativeMotion,Australia,3,2022-08-15,1,USR-3040,25
+USR-3033,Katherine,Jones,fcamacho@nguyen.biz,Junior Agent,CreativeMotion,Europe,1,2015-03-22,1,USR-3048,15
+USR-3034,Kimberly,Franklin,zcortez@crosby.com,Content Agent,CreativeMotion,North America,2,2010-07-16,1,USR-3067,10
+USR-3035,Abigail,Hayes,richjohn@foster.net,Senior Content Agent,CreativeMotion,Australia,3,2019-04-20,1,USR-3062,20
+USR-3036,Kathy,Estes,kellysanders@ayala-mitchell.com,Account Director,PulseMedia,Australia,4,2014-10-06,1,,15
+USR-3037,Roberto,Austin,vaughnrebecca@gallegos-hayes.net,Account Director,PulseMedia,India,4,2011-07-10,1,,30
+USR-3038,Daniel,Osborne,phillipmorris@white.com,Account Director,PulseMedia,North America,4,2012-07-21,1,,20
+USR-3039,Nicole,Davis,heather21@wilson.com,Account Associate,PulseMedia,Australia,1,2010-08-27,0,USR-3057,15
+USR-3040,Christopher,Zimmerman,nicholasjames@barr.com,Account Director,PulseMedia,India,4,2020-09-29,0,,10
+USR-3041,Fernando,Thomas,barneskyle@roberts-white.com,Senior Account Manager,PulseMedia,Asia Pacific,3,2013-06-26,1,USR-3036,30
+USR-3042,Susan,Smith,alexander77@aguirre.com,Account Director,PulseMedia,Asia Pacific,4,2019-04-15,0,,10
+USR-3043,Brianna,Alvarez,mramos@smith.net,Account Director,PulseMedia,Australia,4,2017-01-28,1,,10
+USR-3044,Lori,Clark,eddiedelgado@thomas.org,Senior Account Manager,PulseMedia,Australia,3,2017-06-10,1,USR-3036,20
+USR-3045,Mary,Evans,williamsrobert@martin.org,Marketing Manager,PulseMedia,Europe,2,2016-04-16,0,USR-3072,20
+USR-3046,Donna,Graves,tammycurry@huynh-davis.com,Account Associate,PulseMedia,Australia,1,2013-09-21,1,USR-3042,25
+USR-3047,Marcus,Merritt,changmegan@carter.com,Senior Account Manager,PulseMedia,Australia,3,2012-08-15,0,USR-3040,20
+USR-3048,Heather,Hill,swarren@salazar.org,Account Director,PulseMedia,North America,4,2016-02-03,1,,25
+USR-3049,Jessica,Fuller,webbhaley@mitchell.net,Senior Account Manager,PulseMedia,India,3,2020-02-20,0,USR-3062,20
+USR-3050,Barbara,Hanson,christinacrawford@welch.org,Senior Account Manager,PulseMedia,Australia,3,2016-10-12,1,USR-3082,20
+USR-3051,Jesse,Roberts,aaronjohnson@robles.org,Marketing Manager,PulseMedia,Europe,2,2012-01-29,1,USR-3072,10
+USR-3052,Yolanda,Gutierrez,michael30@harris.com,Account Associate,PulseMedia,Australia,1,2013-06-16,1,USR-3040,25
+USR-3053,Kevin,Pierce,wilsonmathew@ramsey-gilbert.com,Account Director,PulseMedia,India,4,2013-03-19,1,,10
+USR-3054,Marilyn,Lee,sandra77@brewer.com,Senior Account Manager,PulseMedia,Europe,3,2010-10-27,1,USR-3053,30
+USR-3055,Courtney,Mcclain,steven60@evans.net,Marketing Manager,PulseMedia,North America,2,2016-12-22,0,USR-3074,30
+USR-3056,Andrew,Ray,lauren51@ramirez.com,Marketing Manager,PulseMedia,India,2,2020-06-21,0,USR-3043,10
+USR-3057,Tonya,Sims,ashleyprice@wilson.com,Account Director,PulseMedia,North America,4,2022-12-15,1,,15
+USR-3058,Jennifer,Nelson,crawfordjohn@gallegos-turner.net,Account Director,PulseMedia,Europe,4,2014-04-27,1,,30
+USR-3059,Kevin,Rodriguez,stricklandrobin@hunter-lloyd.net,Account Director,PulseMedia,Asia Pacific,4,2012-08-21,1,,15
+USR-3060,Eric,Peterson,hoconnor@rowe-thomas.com,Account Director,PulseMedia,North America,4,2010-05-05,0,,30
+USR-3061,Lynn,Hurley,jamiejohnson@reeves-boyd.com,Licensing Agent,BrandVault,Europe,2,2022-03-03,1,USR-3013,20
+USR-3062,Larry,Williams,cookpamela@meyer.com,Licensing Director,BrandVault,Europe,4,2016-05-09,1,,15
+USR-3063,Andrew,Blake,manuellee@patel-mejia.com,Licensing Agent,BrandVault,India,2,2017-08-06,1,USR-3062,10
+USR-3064,Joseph,Moore,smithcindy@garcia.com,Senior Licensing Agent,BrandVault,North America,3,2020-07-23,0,USR-3005,10
+USR-3065,Donald,Bush,audrey21@austin-morgan.info,Licensing Agent,BrandVault,Asia Pacific,2,2011-03-17,1,USR-3067,25
+USR-3066,Brent,Johnson,rodriguezbrian@myers-bush.org,Senior Licensing Agent,BrandVault,Australia,3,2023-04-18,1,USR-3059,25
+USR-3067,Crystal,Vaughn,tjensen@roth-marquez.net,Licensing Director,BrandVault,India,4,2017-06-15,0,,30
+USR-3068,Christian,Livingston,fbradley@mcdonald.info,Licensing Agent,BrandVault,Asia Pacific,2,2022-09-26,1,USR-3048,25
+USR-3069,Thomas,Meza,michellejensen@myers-lyons.com,Licensing Agent,BrandVault,Asia Pacific,2,2016-12-17,1,USR-3023,25
+USR-3070,Kristina,Khan,efreeman@rodriguez-mendoza.com,Junior Licensing Agent,BrandVault,Europe,1,2015-01-08,1,USR-3040,30
+USR-3071,Justin,Bailey,williamsullivan@robles.com,Licensing Director,BrandVault,India,4,2018-10-17,1,,20
+USR-3072,Amanda,Morales,pallen@moore.com,Licensing Director,BrandVault,Asia Pacific,4,2020-12-07,1,,25
+USR-3073,Lisa,Garza,vbradley@benson.org,Licensing Agent,BrandVault,India,2,2020-09-26,1,USR-3008,15
+USR-3074,Mary,Wilson,gnguyen@thompson-blanchard.com,Licensing Director,BrandVault,India,4,2022-11-21,1,,10
+USR-3075,Carmen,Jennings,pmurphy@brown.org,Junior Licensing Agent,BrandVault,North America,1,2017-04-23,1,USR-3043,10
+USR-3076,Rebecca,Fields,shermandonna@schmidt-price.org,Licensing Director,BrandVault,Australia,4,2020-05-04,1,,25
+USR-3077,Sergio,Harris,kevin46@haas.com,Senior Licensing Agent,BrandVault,Australia,3,2015-06-20,1,USR-3060,25
+USR-3078,Cheryl,Dixon,melissabrown@faulkner.com,Junior Licensing Agent,BrandVault,North America,1,2017-08-23,1,USR-3008,30
+USR-3079,Daniel,Campbell,youngjacqueline@garrett-joseph.biz,Head of Operations,Management,Asia Pacific,5,2022-09-21,1,,30
+USR-3080,Patrick,Gardner,thomaslopez@bridges-ward.biz,Sales Operations Analyst,Management,Europe,2,2013-11-18,1,USR-3005,10
+USR-3081,Eric,Bright,dennisjones@thomas.biz,Sales Operations Analyst,Management,Australia,2,2020-11-30,1,USR-3074,30
+USR-3082,Theresa,Taylor,dawnperry@english-dominguez.biz,Head of Operations,Management,India,5,2022-06-14,1,,25
+USR-3083,Cindy,Gibson,carnold@kelly-lopez.org,VP Sales,Management,India,5,2019-02-07,1,,10

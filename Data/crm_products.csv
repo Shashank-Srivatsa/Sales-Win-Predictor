@@ -1,0 +1,32 @@
+product_id,product_name,product_category,division,standard_unit_price,unit_type,price_range_low,price_range_high,is_active,created_date
+PRD-9000,Model - Day Rate,Model,TalentEdge,10200.0,per day,2500,18000,1,2015-02-20
+PRD-9001,Photographer - Day Rate,Photographer,TalentEdge,5100.0,per day,2200,8000,1,2016-08-07
+PRD-9002,Stylist - Day Rate,Stylist,TalentEdge,3500.0,per day,1500,5500,1,2014-01-05
+PRD-9003,Makeup Artist - Day Rate,Makeup Artist,TalentEdge,2800.0,per day,1200,4500,1,2012-08-12
+PRD-9004,Creative Director - Day Rate,Creative Director,TalentEdge,6200.0,per day,2800,9500,1,2016-10-29
+PRD-9005,Usage Rights - Print,Usage Rights,TalentEdge,14000.0,flat fee,3000,25000,1,2013-07-31
+PRD-9006,Usage Rights - Digital,Usage Rights,TalentEdge,10000.0,flat fee,2000,18000,1,2016-11-07
+PRD-9007,Usage Rights - Global,Usage Rights,TalentEdge,34000.0,flat fee,8000,60000,1,2012-03-04
+PRD-9008,Production - Location Rental,Production,TalentEdge,6800.0,flat fee,1500,12000,1,2013-04-26
+PRD-9009,Scriptwriter - Project,Scriptwriter,CreativeMotion,20000.0,flat fee,5000,35000,1,2014-06-03
+PRD-9010,Director - Day Rate,Director,CreativeMotion,7800.0,per day,3500,12000,1,2015-12-09
+PRD-9011,Designer - Day Rate,Designer,CreativeMotion,3900.0,per day,1800,6000,1,2015-04-23
+PRD-9012,Content Writer - Day Rate,Content Writer,CreativeMotion,2200.0,per day,1000,3500,1,2014-03-18
+PRD-9013,Post-Production Fee,Post-Production Fee,CreativeMotion,29000.0,flat fee,8000,50000,1,2015-07-04
+PRD-9014,Video Production Package,Video Production Package,CreativeMotion,67500.0,flat fee,15000,120000,1,2013-10-13
+PRD-9015,Photography Package,Photography Package,CreativeMotion,25500.0,flat fee,6000,45000,1,2015-12-28
+PRD-9016,Campaign Strategy Fee,Campaign Strategy Fee,PulseMedia,34000.0,flat fee,8000,60000,1,2014-02-22
+PRD-9017,Digital Marketing - Hourly,Digital Marketing,PulseMedia,200.0,per hour,95,250,1,2014-04-11
+PRD-9018,Social Media Management,Social Media Management,PulseMedia,10800.0,per month,3500,18000,1,2014-02-20
+PRD-9019,Media Planning & Buying,Media Planning & Buying,PulseMedia,46000.0,flat fee,12000,80000,1,2014-06-10
+PRD-9020,Branding & Identity,Branding & Identity,PulseMedia,42500.0,flat fee,10000,75000,1,2015-01-21
+PRD-9021,Event Marketing,Event Marketing,PulseMedia,31500.0,flat fee,8000,55000,1,2013-03-08
+PRD-9022,Content Creation Package,Content Creation Package,PulseMedia,23000.0,flat fee,6000,40000,1,2015-09-18
+PRD-9023,Analytics & Reporting,Analytics & Reporting,PulseMedia,7200.0,per month,2500,12000,1,2012-12-21
+PRD-9024,Brand License - Minimum Guarantee,Brand License,BrandVault,425000.0,flat fee,50000,800000,1,2014-08-30
+PRD-9025,Royalty Agreement Setup,Royalty Agreement Setup,BrandVault,15000.0,flat fee,5000,25000,1,2012-10-11
+PRD-9026,Trademark License Fee,Trademark License Fee,BrandVault,110000.0,flat fee,20000,200000,1,2013-01-20
+PRD-9027,Character License - MG,Character License,BrandVault,340000.0,flat fee,80000,600000,1,2015-02-11
+PRD-9028,Sports Logo License,Sports Logo License,BrandVault,195000.0,flat fee,40000,350000,1,2014-02-26
+PRD-9029,Territory Rights Fee,Territory Rights Fee,BrandVault,65000.0,flat fee,10000,120000,1,2016-09-23
+PRD-9030,License Renewal Fee,License Renewal Fee,BrandVault,82500.0,flat fee,15000,150000,1,2014-01-07
