@@ -2,12 +2,12 @@ import snowflake.connector
 import os
 
 conn = snowflake.connector.connect(
-    user='SHASHANKSRIVATSA423',
-    password='DataWithBara@2025',
-    account='QACMQHK-SN72200',
-    warehouse='COMPUTE_WH',
-    database='SALES_WIN_DB',
-    schema='BRONZE'
+    user='******',
+    password='*******',
+    account='********',
+    warehouse='********',
+    database='********',
+    schema='******'
 )
 
 cursor = conn.cursor()
@@ -27,22 +27,30 @@ for file in os.listdir(folder_path):
         stage_file = file + ".gz"
 
         cursor.execute(f"""
+
         CREATE OR REPLACE TABLE {table_name}
         USING TEMPLATE (
-        SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
-        FROM TABLE(
-        INFER_SCHEMA(
-            LOCATION =>'@crm_stage/{stage_file}',
-            FILE_FORMAT =>'csv_format'
+            SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
+            FROM TABLE(
+                INFER_SCHEMA(
+                    LOCATION => '@crm_stage/{stage_file}',
+                    FILE_FORMAT => 'csv_format',
+                    IGNORE_CASE => TRUE
+                )
+            )
         )
-    )
-)
-""")
+       """)
 
         cursor.execute(f"""
         COPY INTO {table_name}
         FROM @crm_stage/{stage_file}
-        FILE_FORMAT = (FORMAT_NAME = 'csv_format')
-        """)
+        FILE_FORMAT = (
+            FORMAT_NAME = 'csv_format'
+            PARSE_HEADER = TRUE
+        )
+        MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE
+        """)        
+        
+        
 
 print("Done loading all CSVs into Snowflake.")
