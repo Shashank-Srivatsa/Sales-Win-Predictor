@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: stg_crm_accounts
+    description: Cleaned and deduplicated client company records from Bronze.
+    columns:
+      - name: account_id
+        tests: [unique, not_null]
+      - name: account_tier
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3]
+
+  - name: stg_crm_contacts
+    description: Cleaned contact records for people at client companies.
+    columns:
+      - name: contact_id
+        tests: [unique, not_null]
+
+  - name: stg_crm_users
+    description: Cleaned internal agent and employee records.
+    columns:
+      - name: user_id
+        tests: [unique, not_null]
+      - name: seniority_level
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5]
+
+  - name: stg_crm_opportunities
+    description: Cleaned deal records — the main ML target table.
+    columns:
+      - name: opportunity_id
+        tests: [unique, not_null]
+      - name: is_won
+        tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+              config:
+                where: "is_won IS NOT NULL"
+
+  - name: stg_crm_line_items
+    description: Cleaned billable line items per deal.
+    columns:
+      - name: line_item_id
+        tests: [unique, not_null]
+
+  - name: stg_crm_stage_history
+    description: Cleaned stage transition history with computed days_in_stage and stage_order.
+    columns:
+      - name: stage_history_id
+        tests: [unique, not_null]
+
+  - name: stg_crm_activities
+    description: Cleaned activity records with positive/negative outcome flags.
+    columns:
+      - name: activity_id
+        tests: [unique, not_null]
+
+  - name: stg_crm_contracts
+    description: Cleaned contract records for won deals.
+    columns:
+      - name: contract_id
+        tests: [unique, not_null]
+
+  - name: stg_crm_products
+    description: Cleaned service and talent product catalogue.
+    columns:
+      - name: product_id
+        tests: [unique, not_null]

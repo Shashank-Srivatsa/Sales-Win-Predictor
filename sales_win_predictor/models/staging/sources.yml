@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: SALES_WIN_DB
+    schema: BRONZE
+    tables:
+      - name: CRM_ACCOUNTS
+      - name: CRM_CONTACTS
+      - name: CRM_USERS
+      - name: CRM_OPPORTUNITIES
+      - name: CRM_OPPURTUNITY_LINE_ITEMS
+      - name: CRM_OPPORTUNITY_STAGE_HISTORY
+      - name: CRM_ACTIVITIES
+      - name: CRM_CONTRACTS
+      - name: CRM_PRODUCTS

@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: int_agent_performance
+    description: Rolling performance metrics per agent computed from closed deals only.
+    columns:
+      - name: agent_id
+        tests: [unique, not_null]
+
+  - name: int_client_deal_history
+    description: Client-level deal history and win rate per account.
+    columns:
+      - name: account_id
+        tests: [unique, not_null]
+
+  - name: int_deal_activity_summary
+    description: Aggregated activity metrics per deal opportunity.
+    columns:
+      - name: opportunity_id
+        tests: [unique, not_null]
+
+  - name: int_deal_line_item_summary
+    description: Aggregated line item complexity metrics per deal opportunity.
+    columns:
+      - name: opportunity_id
+        tests: [unique, not_null]

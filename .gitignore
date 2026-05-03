@@ -1,3 +1,43 @@
 Data/
 *.csv
 *.gz
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# dbt
+sales_win_predictor/target/
+sales_win_predictor/dbt_packages/
+sales_win_predictor/logs/
+sales_win_predictor/profiles.yml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# MLflow
+mlflow_runs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

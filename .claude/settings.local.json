@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(SNOWFLAKE_ACCOUNT=dummy SNOWFLAKE_USER=dummy SNOWFLAKE_PASSWORD=dummy \"../.venv/Scripts/dbt\" parse --profiles-dir .)"
+    ]
+  }
+}

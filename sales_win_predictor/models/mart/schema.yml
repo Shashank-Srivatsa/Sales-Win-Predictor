@@ -1,0 +1,116 @@
+version: 2
+
+models:
+  - name: dim_account
+    description: >
+      Gold dimension — one row per client account.
+      Primary key: account_sk (surrogate). Natural key: account_id.
+      Enriched with deal history metrics from int_client_deal_history.
+    columns:
+      - name: account_sk
+        tests: [unique, not_null]
+      - name: account_id
+        tests: [unique, not_null]
+      - name: account_tier
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3]
+
+  - name: dim_user
+    description: >
+      Gold dimension — one row per internal agent / employee.
+      Primary key: user_sk (surrogate). Natural key: user_id.
+      Enriched with rolling performance metrics from int_agent_performance.
+    columns:
+      - name: user_sk
+        tests: [unique, not_null]
+      - name: user_id
+        tests: [unique, not_null]
+
+  - name: dim_date
+    description: >
+      Standard date spine 2015–2025.
+      Primary key: date_sk (integer YYYYMMDD). Natural key: date_day.
+      Includes fiscal quarter-end flags for Power BI time intelligence.
+    columns:
+      - name: date_sk
+        tests: [unique, not_null]
+      - name: date_day
+        tests: [unique, not_null]
+
+  - name: fact_opportunities
+    description: >
+      Core business fact table — one row per opportunity (deal).
+      Thin fact: holds only surrogate FKs, measures, ML features, and
+      degenerate dimensions (deal-level categoricals with no own dim table).
+      Descriptive attributes live in dim_account / dim_user / dim_date.
+    columns:
+      - name: opportunity_sk
+        tests: [unique, not_null]
+      - name: opportunity_id
+        tests: [unique, not_null]
+      - name: account_sk
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_account')
+                field: account_sk
+      - name: user_sk
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_user')
+                field: user_sk
+      - name: created_date_sk
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_sk
+      - name: is_won
+        tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+              config:
+                where: "is_won IS NOT NULL"
+      - name: amount
+        tests: [not_null]
+
+  - name: fact_line_items
+    description: >
+      Grain: one row per line item.
+      Holds surrogate FKs to dim_account, dim_user, dim_date, and fact_opportunities.
+    columns:
+      - name: line_item_sk
+        tests: [unique, not_null]
+      - name: line_item_id
+        tests: [unique, not_null]
+      - name: opportunity_sk
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_opportunities')
+                field: opportunity_sk
+
+  - name: fact_stage_history
+    description: >
+      Grain: one row per stage transition.
+      Holds surrogate FKs to dim_account, dim_user, dim_date, and fact_opportunities.
+    columns:
+      - name: stage_history_sk
+        tests: [unique, not_null]
+      - name: stage_history_id
+        tests: [unique, not_null]
+      - name: opportunity_sk
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_opportunities')
+                field: opportunity_sk

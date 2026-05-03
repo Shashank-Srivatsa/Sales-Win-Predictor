@@ -1,0 +1,70 @@
+name: 'sales_win_predictor'
+version: '1.0.0'
+config-version: 2
+
+profile: 'sales_win_predictor'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+analysis-paths: ["analyses"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Business rule defaults — the single source of truth for COALESCE values
+# ─────────────────────────────────────────────────────────────────────────────
+vars:
+  # Account defaults
+  default_account_tier: 3                    # Small/new clients → tier 3
+  default_is_active_account: 1               # Unknown status → active
+  default_number_of_employees: 0             # Unknown size → 0
+
+  # User / Agent defaults
+  default_seniority_level: 2                 # Unknown → mid-level
+  default_is_active_user: 1                  # Unknown status → active
+  default_target_deals: 20                   # Unknown quota → 20/year
+
+  # Deal defaults
+  default_discount_pct: 0.0                  # No discount specified → 0%
+  default_is_renewal: 0                      # Default → new business
+  default_is_open: 0                         # Default → closed (conservative)
+  default_is_negotiated_item: 0              # Default → standard price
+
+  # Aggregation defaults (when no data found)
+  default_win_rate: 0.0                      # No wins recorded → 0%
+  default_open_deals: 0                      # No open deals → 0
+  default_total_deals: 0                     # No deals → 0
+  default_total_activities: 0                # No activity → 0
+  default_days_since_activity: 999           # No activity ever → assume very stale
+  default_negotiated_count: 0                # No negotiated items → 0
+
+  # Contract defaults
+  default_contract_revisions: 0              # Unknown revisions → 0
+  default_has_royalty: 0                     # Unknown → no royalty clause
+  default_contract_duration_months: 12       # Unknown duration → 12 months
+
+models:
+  sales_win_predictor:
+    +database: SALES_WIN_DB
+    staging:
+      +schema: SILVER
+      +materialized: view
+    intermediate:
+      +schema: SILVER
+      +materialized: view
+    mart:
+      +schema: GOLD
+      +materialized: table
+    ml:
+      +schema: ML
+      +materialized: table
+
+seeds:
+  sales_win_predictor:
+    +database: SALES_WIN_DB
+    +schema: SILVER
