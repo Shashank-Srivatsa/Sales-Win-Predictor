@@ -1,6 +1,23 @@
 version: 2
 
 models:
+  - name: dim_product
+    description: >
+      Gold dimension — one row per product in the catalogue.
+      Primary key: product_sk (surrogate). Natural key: product_id.
+      Contains all descriptive product attributes (name, category, division,
+      unit type, pricing) moved out of fact_line_items.
+    columns:
+      - name: product_sk
+        tests: [unique, not_null]
+      - name: product_id
+        tests: [unique, not_null]
+      - name: is_active
+        tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+
   - name: dim_account
     description: >
       Gold dimension — one row per client account.
@@ -97,6 +114,13 @@ models:
               arguments:
                 to: ref('fact_opportunities')
                 field: opportunity_sk
+      - name: product_sk
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: product_sk
 
   - name: fact_stage_history
     description: >

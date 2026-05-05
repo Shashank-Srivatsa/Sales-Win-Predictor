@@ -2,11 +2,7 @@ WITH line_items AS (
     SELECT * FROM {{ ref('stg_crm_line_items') }}
 ),
 
-products AS (
-    SELECT * FROM {{ ref('stg_crm_products') }}
-),
-
--- Pull only the keys + measures we need from fact_opportunities
+-- Pull only the keys + context measures we need from fact_opportunities
 opportunities AS (
     SELECT
         opportunity_sk,
@@ -25,29 +21,28 @@ opportunities AS (
 )
 
 SELECT
-    -- Surrogate key (own)
+    -- ── Surrogate key (own) ──────────────────────────────────────────────────
     {{ dbt_utils.generate_surrogate_key(['li.line_item_id']) }}     AS line_item_sk,
 
-    -- Foreign keys
+    -- ── Foreign keys ─────────────────────────────────────────────────────────
     o.opportunity_sk,
     o.account_sk,
     o.user_sk,
     o.created_date_sk                                               AS opportunity_date_sk,
+    {{ dbt_utils.generate_surrogate_key(['li.product_id']) }}       AS product_sk,
 
-    -- Natural keys
+    -- ── Natural keys ─────────────────────────────────────────────────────────
     li.line_item_id,
     li.opportunity_id,
     li.product_id,
 
-    -- Descriptive (degenerate — no separate dim_product table)
+    -- ── Degenerate dimensions (line-item level categoricals) ─────────────────
     li.line_item_name,
     li.line_item_type,
     li.unit_type,
-    p.product_name,
-    p.product_category,
-    p.standard_unit_price,
 
-    -- Measures
+    -- ── Measures ─────────────────────────────────────────────────────────────
+    'USD'                                                           AS currency_code,
     li.unit_price,
     li.quantity,
     li.gross_amount,
@@ -56,13 +51,13 @@ SELECT
     li.is_negotiated,
     li.created_date,
 
-    -- Context from opportunity (degenerate dims)
+    -- ── Opportunity context (degenerate dims, avoids back-join in reports) ────
     o.division,
     o.region,
     o.is_won,
     o.is_open,
     o.fiscal_year,
     o.fiscal_quarter
+
 FROM line_items li
-LEFT JOIN products p      ON li.product_id = p.product_id
 LEFT JOIN opportunities o ON li.opportunity_id = o.opportunity_id
