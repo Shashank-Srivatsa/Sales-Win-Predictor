@@ -1,0 +1,138 @@
+version: 2
+
+models:
+  - name: ml_deal_features
+    description: >
+      Feature-engineered table for the Sales Win Predictor XGBoost model.
+      One row per opportunity across all three partitions: train (closed,
+      fiscal_year <= 2022), test (closed, fiscal_year >= 2023), and score
+      (currently open deals). Features are computed at Negotiation-stage
+      entry to prevent data leakage.
+    config:
+      tags: ['ml']
+    columns:
+
+      # ── Identity ────────────────────────────────────────────────────────────
+      - name: opportunity_id
+        description: Natural key — CRM opportunity identifier
+        tests:
+          - unique
+          - not_null
+
+      - name: opportunity_sk
+        description: Surrogate key (MD5 hash) matching fact_opportunities
+        tests:
+          - not_null
+
+      - name: ml_split
+        description: Partition label used by the training pipeline
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['train', 'test', 'score']
+
+      # ── Target ──────────────────────────────────────────────────────────────
+      - name: target_is_won
+        description: >
+          1 = won, 0 = lost, NULL = open (score set).
+          Never imputed — NULL is intentional for active deals.
+
+      # ── [A] Deal Value ───────────────────────────────────────────────────────
+      - name: deal_value_log
+        description: LN(amount + 1) — log-transforms right-skewed deal values
+
+      - name: deal_value_raw
+        description: Raw deal amount in USD
+
+      - name: discount_pct
+        description: Discount applied as a fraction (0–1)
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+                inclusive: true
+
+      - name: discount_risk_score
+        description: Ordinal bin — 0=no discount, 1=<=5%, 2=<=15%, 3=<=25%, 4=>25%
+        tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1, 2, 3, 4]
+
+      # ── [B] Deal Categorical ─────────────────────────────────────────────────
+      - name: deal_type_encoded
+        description: New=0, Renewal=1, Upsell=2, Cross-sell=3, Unknown=-1
+        tests:
+          - accepted_values:
+              arguments:
+                values: [-1, 0, 1, 2, 3]
+
+      - name: division_encoded
+        description: TalentEdge=0, CreativeMotion=1, PulseMedia=2, BrandVault=3, Unknown=-1
+        tests:
+          - accepted_values:
+              arguments:
+                values: [-1, 0, 1, 2, 3]
+
+      - name: region_encoded
+        description: NA=0, EU=1, IN=2, APAC=3, AU=4, Unknown=-1
+        tests:
+          - accepted_values:
+              arguments:
+                values: [-1, 0, 1, 2, 3, 4]
+
+      # ── [F] Agent ────────────────────────────────────────────────────────────
+      - name: agent_trailing_12m_win_rate
+        description: Agent win rate over the trailing 12 months (0–1)
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+                inclusive: true
+
+      - name: agent_win_rate_this_division
+        description: Agent win rate specific to the deal's division (0–1)
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+                inclusive: true
+
+      # ── [G] Client ───────────────────────────────────────────────────────────
+      - name: client_win_rate
+        description: Historical win rate for this account across all deals (0–1)
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+                inclusive: true
+
+      - name: account_tier
+        description: Client tier 1–3 (1=strategic, 3=small/new)
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3]
+
+      # ── [H] Engagement ───────────────────────────────────────────────────────
+      - name: engagement_score
+        description: Share of activities in the last 14 days (0–1); NULL if no activities
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+                inclusive: true
+
+      - name: positive_activity_ratio
+        description: Share of activities with a positive outcome (0–1); NULL if no activities
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+                inclusive: true

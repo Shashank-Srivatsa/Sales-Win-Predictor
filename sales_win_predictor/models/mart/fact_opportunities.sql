@@ -68,6 +68,7 @@ SELECT
     o.fiscal_quarter,
 
     -- ── Core measures ────────────────────────────────────────────────────────
+    'USD'                                                             AS currency_code,
     o.amount,
     o.discount_pct,
     o.probability_manual,
