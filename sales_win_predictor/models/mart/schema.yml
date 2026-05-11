@@ -122,6 +122,25 @@ models:
                 to: ref('dim_product')
                 field: product_sk
 
+  - name: fact_opportunities_scored
+    description: >
+      Gold fact table — one row per opportunity with the latest ML prediction joined on.
+      Open deals have win_probability and SHAP factor columns populated.
+      Closed deals have those columns NULL (outcome already known).
+      Primary key: opportunity_sk. Refreshed daily after 06_write_predictions.py runs.
+    columns:
+      - name: opportunity_sk
+        tests: [unique, not_null]
+      - name: opportunity_id
+        tests: [unique, not_null]
+      - name: probability_band
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['HIGH', 'MEDIUM', 'LOW']
+              config:
+                where: "probability_band IS NOT NULL"
+
   - name: fact_stage_history
     description: >
       Grain: one row per stage transition.

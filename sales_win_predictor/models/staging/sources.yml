@@ -1,6 +1,12 @@
 version: 2
 
 sources:
+  - name: ml
+    database: SALES_WIN_DB
+    schema: ML
+    tables:
+      - name: ML_PREDICTIONS
+
   - name: bronze
     database: SALES_WIN_DB
     schema: BRONZE
