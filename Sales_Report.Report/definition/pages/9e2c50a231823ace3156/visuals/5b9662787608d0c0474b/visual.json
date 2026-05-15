@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "5b9662787608d0c0474b",
+  "position": {
+    "x": 0,
+    "y": 187.37525767373563,
+    "z": 2000,
+    "height": 101.78409058820206,
+    "width": 268.33987518707818,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Selected Deal Stage"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Selected Deal Stage",
+              "nativeQueryRef": "Selected Deal Stage"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
