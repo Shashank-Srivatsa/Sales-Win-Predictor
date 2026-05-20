@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(SNOWFLAKE_ACCOUNT=dummy SNOWFLAKE_USER=dummy SNOWFLAKE_PASSWORD=dummy \"../.venv/Scripts/dbt\" parse --profiles-dir .)"
+      "Bash(SNOWFLAKE_ACCOUNT=dummy SNOWFLAKE_USER=dummy SNOWFLAKE_PASSWORD=dummy \"../.venv/Scripts/dbt\" parse --profiles-dir .)",
+      "Bash(export SNOWFLAKE_ACCOUNT=\"QACMQHK-SN72200\")",
+      "Bash(export SNOWFLAKE_USER=\"SHASHANKSRIVATSA423\")",
+      "Bash(export SNOWFLAKE_PASSWORD=\"DataWithBara@2025\")",
+      "Bash(python ml/01_eda.py)",
+      "Bash(python ml/02_train.py)",
+      "Bash(python ml/03_evaluate.py)",
+      "Bash(python ml/06_write_predictions.py)",
+      "Bash(dbt run *)"
     ]
   }
 }

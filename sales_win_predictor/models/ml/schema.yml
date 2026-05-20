@@ -35,7 +35,13 @@ models:
       - name: target_is_won
         description: >
           1 = won, 0 = lost, NULL = open (score set).
-          Never imputed — NULL is intentional for active deals.
+          Never imputed -- NULL is intentional for active deals.
+        tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+              config:
+                where: "target_is_won IS NOT NULL"
 
       # ── [A] Deal Value ───────────────────────────────────────────────────────
       - name: deal_value_log

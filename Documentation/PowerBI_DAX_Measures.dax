@@ -1,0 +1,270 @@
+// ============================================================
+// SALES WIN PREDICTOR — Power BI DAX Measures
+// ============================================================
+// HOW TO USE:
+//   In Power BI Desktop: Modeling tab > New Measure
+//   Copy each measure block below into the formula bar.
+//   All measures assume the primary table is 'fact_opportunities_scored'.
+// ============================================================
+
+
+// ── PAGE 1: Pipeline Command Centre ──────────────────────────────────────────
+
+Total Pipeline Value =
+    CALCULATE(
+        SUM( 'fact_opportunities_scored'[amount] ),
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+Weighted Pipeline =
+    CALCULATE(
+        SUMX(
+            'fact_opportunities_scored',
+            'fact_opportunities_scored'[amount] * 'fact_opportunities_scored'[win_probability]
+        ),
+        'fact_opportunities_scored'[is_open] = 1,
+        NOT ISBLANK( 'fact_opportunities_scored'[win_probability] )
+    )
+
+High Confidence Wins =
+    CALCULATE(
+        COUNTROWS( 'fact_opportunities_scored' ),
+        'fact_opportunities_scored'[probability_band] = "HIGH",
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+At Risk Pipeline =
+    CALCULATE(
+        SUM( 'fact_opportunities_scored'[amount] ),
+        'fact_opportunities_scored'[probability_band] = "LOW",
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+Open Deal Count =
+    CALCULATE(
+        COUNTROWS( 'fact_opportunities_scored' ),
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+// Format helper — shows probability as a % with 1 decimal (use in card visuals)
+Avg Win Probability =
+    CALCULATE(
+        AVERAGE( 'fact_opportunities_scored'[win_probability] ),
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+
+// ── PAGE 2: Deal Funnel Analysis ──────────────────────────────────────────────
+
+Win Rate =
+    DIVIDE(
+        CALCULATE(
+            COUNTROWS( 'fact_opportunities_scored' ),
+            'fact_opportunities_scored'[is_won] = 1
+        ),
+        CALCULATE(
+            COUNTROWS( 'fact_opportunities_scored' ),
+            'fact_opportunities_scored'[is_won] IN { 0, 1 }
+        )
+    )
+
+// Win rate for the prior year — used in year-over-year bar chart
+Win Rate PY =
+    CALCULATE(
+        [Win Rate],
+        DATEADD( 'dim_date'[date_day], -1, YEAR )
+    )
+
+Win Rate YoY Change =
+    [Win Rate] - [Win Rate PY]
+
+Avg Days to Close =
+    CALCULATE(
+        AVERAGEX(
+            'fact_opportunities_scored',
+            'fact_opportunities_scored'[total_days_in_funnel]
+        ),
+        'fact_opportunities_scored'[is_won] = 1
+    )
+
+// Conversion rate at each funnel stage
+// Use these in a funnel visual: one measure per stage
+Deals Reached Lead =
+    CALCULATE(
+        COUNTROWS( 'fact_stage_history' ),
+        'fact_stage_history'[to_stage] = "Lead"
+    )
+
+Deals Reached Qualified =
+    CALCULATE(
+        COUNTROWS( 'fact_stage_history' ),
+        'fact_stage_history'[to_stage] = "Qualified Lead"
+    )
+
+Deals Reached Opportunity =
+    CALCULATE(
+        COUNTROWS( 'fact_stage_history' ),
+        'fact_stage_history'[to_stage] = "Opportunity"
+    )
+
+Deals Reached Negotiation =
+    CALCULATE(
+        COUNTROWS( 'fact_stage_history' ),
+        'fact_stage_history'[to_stage] = "Negotiation"
+    )
+
+Deals Closed Won =
+    CALCULATE(
+        COUNTROWS( 'fact_opportunities_scored' ),
+        'fact_opportunities_scored'[is_won] = 1
+    )
+
+
+// ── PAGE 3: Individual Deal Intelligence ─────────────────────────────────────
+
+// Use this on the gauge visual for a single deal selected by slicer
+Selected Deal Win Probability =
+    IF(
+        HASONEVALUE( 'fact_opportunities_scored'[opportunity_id] ),
+        SELECTEDVALUE( 'fact_opportunities_scored'[win_probability] ),
+        BLANK()
+    )
+
+// Gauge colour logic — use Conditional Formatting on the gauge fill
+// Red < 0.35, Amber 0.35–0.60, Green > 0.60
+// In Power BI: Format > Data colors > Conditional Formatting > Rules
+//   Rule 1: win_probability < 0.35    -> Red    (#E74C3C)
+//   Rule 2: win_probability 0.35–0.60 -> Amber  (#F39C12)
+//   Rule 3: win_probability > 0.60    -> Green  (#2ECC71)
+
+Selected Deal Amount =
+    IF(
+        HASONEVALUE( 'fact_opportunities_scored'[opportunity_id] ),
+        SELECTEDVALUE( 'fact_opportunities_scored'[amount] ),
+        BLANK()
+    )
+
+Selected Deal Stage =
+    IF(
+        HASONEVALUE( 'fact_opportunities_scored'[opportunity_id] ),
+        SELECTEDVALUE( 'fact_opportunities_scored'[stage] ),
+        BLANK()
+    )
+
+Selected Deal Days in Funnel =
+    IF(
+        HASONEVALUE( 'fact_opportunities_scored'[opportunity_id] ),
+        SELECTEDVALUE( 'fact_opportunities_scored'[total_days_in_funnel] ),
+        BLANK()
+    )
+
+Selected Deal Top Positive Factors =
+    IF(
+        HASONEVALUE( 'fact_opportunities_scored'[opportunity_id] ),
+        SELECTEDVALUE( 'fact_opportunities_scored'[top_positive_factors] ),
+        "Select a deal above"
+    )
+
+Selected Deal Top Risk Factors =
+    IF(
+        HASONEVALUE( 'fact_opportunities_scored'[opportunity_id] ),
+        SELECTEDVALUE( 'fact_opportunities_scored'[top_negative_factors] ),
+        "Select a deal above"
+    )
+
+
+// ── PAGE 4: Agent Performance ─────────────────────────────────────────────────
+
+Agent Win Rate =
+    DIVIDE(
+        CALCULATE(
+            COUNTROWS( 'fact_opportunities_scored' ),
+            'fact_opportunities_scored'[is_won] = 1
+        ),
+        CALCULATE(
+            COUNTROWS( 'fact_opportunities_scored' ),
+            'fact_opportunities_scored'[is_won] IN { 0, 1 }
+        )
+    )
+
+Agent Open Deals =
+    CALCULATE(
+        COUNTROWS( 'fact_opportunities_scored' ),
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+Agent Avg Days to Close =
+    CALCULATE(
+        AVERAGEX(
+            'fact_opportunities_scored',
+            'fact_opportunities_scored'[total_days_in_funnel]
+        ),
+        'fact_opportunities_scored'[is_won] = 1
+    )
+
+// Reference line for the scatter chart (30 open deals = overload threshold per spec)
+Agent Overload Line = 30
+
+
+// ── PAGE 5: Client Intelligence ───────────────────────────────────────────────
+
+Client Lifetime Value =
+    CALCULATE(
+        SUM( 'fact_opportunities_scored'[amount] ),
+        'fact_opportunities_scored'[is_won] = 1
+    )
+
+Client Win Rate =
+    DIVIDE(
+        CALCULATE(
+            COUNTROWS( 'fact_opportunities_scored' ),
+            'fact_opportunities_scored'[is_won] = 1
+        ),
+        CALCULATE(
+            COUNTROWS( 'fact_opportunities_scored' ),
+            'fact_opportunities_scored'[is_won] IN { 0, 1 }
+        )
+    )
+
+// Clients with no activity in 90+ days
+At Risk Clients =
+    CALCULATE(
+        DISTINCTCOUNT( 'fact_opportunities_scored'[account_sk] ),
+        'fact_opportunities_scored'[days_since_last_activity] >= 90,
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+
+// ── PAGE 6: Revenue Forecast ──────────────────────────────────────────────────
+
+Pipeline HIGH =
+    CALCULATE(
+        SUM( 'fact_opportunities_scored'[amount] ),
+        'fact_opportunities_scored'[probability_band] = "HIGH",
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+Pipeline MEDIUM =
+    CALCULATE(
+        SUM( 'fact_opportunities_scored'[amount] ),
+        'fact_opportunities_scored'[probability_band] = "MEDIUM",
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+Pipeline LOW =
+    CALCULATE(
+        SUM( 'fact_opportunities_scored'[amount] ),
+        'fact_opportunities_scored'[probability_band] = "LOW",
+        'fact_opportunities_scored'[is_open] = 1
+    )
+
+Actual Closed Revenue =
+    CALCULATE(
+        SUM( 'fact_opportunities_scored'[amount] ),
+        'fact_opportunities_scored'[is_won] = 1
+    )
+
+// Coverage ratio: how much weighted pipeline do we have per $1 of target?
+// Useful as a KPI card (> 3x is healthy pipeline coverage)
+Pipeline Coverage =
+    DIVIDE( [Weighted Pipeline], [Actual Closed Revenue] )

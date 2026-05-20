@@ -1,0 +1,213 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "c62f7253b13e009882a3",
+  "position": {
+    "x": 89.830508474576277,
+    "y": 377.96610169491527,
+    "z": 2000,
+    "height": 279.66101694915255,
+    "width": 1150.8474576271187,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_USER"
+                    }
+                  },
+                  "Property": "DIVISION"
+                }
+              },
+              "queryRef": "DIM_USER.DIVISION",
+              "nativeQueryRef": "DIVISION"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Open Deal Count"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Open Deal Count",
+              "nativeQueryRef": "Open Deal Count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Total Pipeline Value"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Total Pipeline Value",
+              "nativeQueryRef": "Total Pipeline Value"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Weighted Pipeline"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Weighted Pipeline",
+              "nativeQueryRef": "Weighted Pipeline"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "High Confidence Wins"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.High Confidence Wins",
+              "nativeQueryRef": "High Confidence Wins"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "At Risk Pipeline"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.At Risk Pipeline",
+              "nativeQueryRef": "At Risk Pipeline"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Pipeline Coverage"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Pipeline Coverage",
+              "nativeQueryRef": "Pipeline Coverage"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Avg Win Probability"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Avg Win Probability",
+              "nativeQueryRef": "Avg Win Probability"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "139.3480728428279D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_USER.DIVISION"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'BoldHeader'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

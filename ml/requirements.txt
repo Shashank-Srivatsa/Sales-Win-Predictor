@@ -1,0 +1,11 @@
+# ML pipeline dependencies — Sales Win Predictor
+# Install with: pip install -r ml/requirements.txt
+
+snowflake-connector-python==4.4.0
+pandas==2.3.3
+numpy==2.4.4
+xgboost==3.2.0
+scikit-learn==1.8.0
+shap==0.51.0
+mlflow==3.11.1
+python-dotenv>=1.0.0

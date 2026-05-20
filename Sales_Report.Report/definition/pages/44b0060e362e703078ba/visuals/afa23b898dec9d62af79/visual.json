@@ -1,0 +1,492 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "afa23b898dec9d62af79",
+  "position": {
+    "x": 0,
+    "y": 228.33333333333334,
+    "z": 5000,
+    "height": 470,
+    "width": 998.33333333333337,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "PROBABILITY_BAND"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.PROBABILITY_BAND",
+              "nativeQueryRef": "PROBABILITY_BAND"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                        }
+                      },
+                      "Property": "TOTAL_DAYS_IN_FUNNEL"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(FACT_OPPORTUNITIES_SCORED.TOTAL_DAYS_IN_FUNNEL)",
+              "nativeQueryRef": "Sum of TOTAL_DAYS_IN_FUNNEL"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                        }
+                      },
+                      "Property": "OPPORTUNITY_ID"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(FACT_OPPORTUNITIES_SCORED.OPPORTUNITY_ID)",
+              "nativeQueryRef": "First OPPORTUNITY_ID"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                        }
+                      },
+                      "Property": "STAGE"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(FACT_OPPORTUNITIES_SCORED.STAGE)",
+              "nativeQueryRef": "First STAGE"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                        }
+                      },
+                      "Property": "TOP_NEGATIVE_FACTORS"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(FACT_OPPORTUNITIES_SCORED.TOP_NEGATIVE_FACTORS)",
+              "nativeQueryRef": "First TOP_NEGATIVE_FACTORS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                        }
+                      },
+                      "Property": "TOP_POSITIVE_FACTORS"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(FACT_OPPORTUNITIES_SCORED.TOP_POSITIVE_FACTORS)",
+              "nativeQueryRef": "First TOP_POSITIVE_FACTORS"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "AMOUNT"
+                }
+              },
+              "queryRef": "Sum(FACT_OPPORTUNITIES_SCORED.AMOUNT)",
+              "nativeQueryRef": "AMOUNT",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "WIN_PROBABILITY"
+                }
+              },
+              "queryRef": "Sum(FACT_OPPORTUNITIES_SCORED.WIN_PROBABILITY)",
+              "nativeQueryRef": "WIN_PROBABILITY"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "categoryLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "zoom": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "markers": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "borderColorMatchFill": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "bubbles": [
+        {
+          "properties": {
+            "bubbleSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "-10L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "xAxisReferenceLine": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "displayName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'X-Axis Constant Line 1'"
+                }
+              }
+            },
+            "value": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                        }
+                      },
+                      "Property": "AMOUNT"
+                    }
+                  },
+                  "Function": 6
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "55D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'back'"
+                }
+              }
+            },
+            "shadeShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "dataLabelShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "dataLabelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "1"
+          }
+        }
+      ],
+      "y1AxisReferenceLine": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "displayName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Y-Axis Constant Line 1'"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'back'"
+                }
+              }
+            },
+            "shadeShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "shadeRegion": {
+              "expr": {
+                "Literal": {
+                  "Value": "'after'"
+                }
+              }
+            },
+            "shadeColorMatchStroke": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "shadeTransparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.6D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "1"
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'TopCenter'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "26835792ca95953c0b26",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FACT_OPPORTUNITIES_SCORED"
+              }
+            },
+            "Property": "IS_OPEN"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "FACT_OPPORTUNITIES_SCORED",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "IS_OPEN"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "1D"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  }
+}

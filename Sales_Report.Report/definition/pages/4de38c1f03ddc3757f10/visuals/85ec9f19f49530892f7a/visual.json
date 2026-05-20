@@ -1,0 +1,168 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "85ec9f19f49530892f7a",
+  "position": {
+    "x": 640.677966101695,
+    "y": 0,
+    "z": 1000,
+    "height": 359.32203389830511,
+    "width": 600,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_USER"
+                    }
+                  },
+                  "Property": "DIVISION"
+                }
+              },
+              "queryRef": "DIM_USER.DIVISION",
+              "nativeQueryRef": "DIVISION",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Actual Closed Revenue"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Actual Closed Revenue",
+              "nativeQueryRef": "Closed Revenue",
+              "displayName": "Closed Revenue"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Total Pipeline Value"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Total Pipeline Value",
+              "nativeQueryRef": "Raw Pipeline",
+              "displayName": "Raw Pipeline"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Weighted Pipeline"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Weighted Pipeline",
+              "nativeQueryRef": "Weighted Pipeline"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FACT_OPPORTUNITIES_SCORED"
+                  }
+                },
+                "Property": "Actual Closed Revenue"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "preferredCategoryWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'REVENUE'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'RAW vs WEIGHTED vs CLOSED'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

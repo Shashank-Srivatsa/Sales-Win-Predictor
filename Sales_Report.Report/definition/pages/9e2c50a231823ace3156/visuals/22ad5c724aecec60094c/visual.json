@@ -1,0 +1,217 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "22ad5c724aecec60094c",
+  "position": {
+    "x": 268.33987518707818,
+    "y": 342.36466834213422,
+    "z": 6000,
+    "height": 120.29028887696607,
+    "width": 1010.9010815237342,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Selected Deal Top Positive Factors"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Selected Deal Top Positive Factors",
+              "nativeQueryRef": "Top Positive Factors",
+              "displayName": "Top Positive Factors"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "Selected Deal Top Risk Factors"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.Selected Deal Top Risk Factors",
+              "nativeQueryRef": "Top Risk Factors",
+              "displayName": "Top Risk Factors"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FACT_OPPORTUNITIES_SCORED"
+                  }
+                },
+                "Property": "Selected Deal Top Positive Factors"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnFormatting": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#A72E21'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FACT_OPPORTUNITIES_SCORED.Selected Deal Top Risk Factors"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0B8315'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FACT_OPPORTUNITIES_SCORED.Selected Deal Top Positive Factors"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "508.24070366369125D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FACT_OPPORTUNITIES_SCORED.Selected Deal Top Positive Factors"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "453.8672507695951D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FACT_OPPORTUNITIES_SCORED.Selected Deal Top Risk Factors"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'fitToContent'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

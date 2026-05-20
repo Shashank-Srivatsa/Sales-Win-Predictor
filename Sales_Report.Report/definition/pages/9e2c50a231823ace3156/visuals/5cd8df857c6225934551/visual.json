@@ -1,0 +1,388 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "5cd8df857c6225934551",
+  "position": {
+    "x": 0,
+    "y": 529.73992601586986,
+    "z": 7000,
+    "height": 175.80888374325812,
+    "width": 1279.2409567108123,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_USER"
+                    }
+                  },
+                  "Property": "FULL_NAME"
+                }
+              },
+              "queryRef": "DIM_USER.FULL_NAME",
+              "nativeQueryRef": "FULL_NAME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_ACCOUNT"
+                    }
+                  },
+                  "Property": "ACCOUNT_NAME"
+                }
+              },
+              "queryRef": "DIM_ACCOUNT.ACCOUNT_NAME",
+              "nativeQueryRef": "ACCOUNT_NAME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "DIVISION"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.DIVISION",
+              "nativeQueryRef": "DIVISION"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "LEAD_SOURCE"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.LEAD_SOURCE",
+              "nativeQueryRef": "LEAD_SOURCE"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                        }
+                      },
+                      "Property": "DAYS_IN_NEGOTIATION_STAGE"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(FACT_OPPORTUNITIES_SCORED.DAYS_IN_NEGOTIATION_STAGE)",
+              "nativeQueryRef": "DAYS_IN_NEGOTIATION_STAGE",
+              "displayName": "DAYS_IN_NEGOTIATION_STAGE"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                        }
+                      },
+                      "Property": "DAYS_SINCE_LAST_ACTIVITY"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(FACT_OPPORTUNITIES_SCORED.DAYS_SINCE_LAST_ACTIVITY)",
+              "nativeQueryRef": "DAYS SILENT",
+              "displayName": "DAYS SILENT"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FACT_OPPORTUNITIES_SCORED"
+                    }
+                  },
+                  "Property": "PROBABILITY_BAND"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.PROBABILITY_BAND",
+              "nativeQueryRef": "PROBABILITY_BAND"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FACT_OPPORTUNITIES_SCORED"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "PREDICTION_DATE"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Year"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.PREDICTION_DATE.Variation.Date Hierarchy.Year",
+              "nativeQueryRef": "PREDICTION_DATE Year"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FACT_OPPORTUNITIES_SCORED"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "PREDICTION_DATE"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Quarter"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.PREDICTION_DATE.Variation.Date Hierarchy.Quarter",
+              "nativeQueryRef": "PREDICTION_DATE Quarter"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FACT_OPPORTUNITIES_SCORED"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "PREDICTION_DATE"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Month"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.PREDICTION_DATE.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "PREDICTION_DATE Month"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FACT_OPPORTUNITIES_SCORED"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "PREDICTION_DATE"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Day"
+                }
+              },
+              "queryRef": "FACT_OPPORTUNITIES_SCORED.PREDICTION_DATE.Variation.Date Hierarchy.Day",
+              "nativeQueryRef": "PREDICTION_DATE Day"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "139D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FACT_OPPORTUNITIES_SCORED.PROBABILITY_BAND"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 0,
+                              "Left": {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                                        }
+                                      },
+                                      "Property": "PROBABILITY_BAND"
+                                    }
+                                  },
+                                  "Function": 3
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "'LOW'"
+                                }
+                              }
+                            },
+                            "Annotations": {
+                              "PowerBI.SQExprEvaluationKind": 1,
+                              "PowerBI.SQExprTextOperatorOption": 2
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#de6a73'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 0,
+                              "Left": {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                                        }
+                                      },
+                                      "Property": "PROBABILITY_BAND"
+                                    }
+                                  },
+                                  "Function": 3
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "'MEDIUM'"
+                                }
+                              }
+                            },
+                            "Annotations": {
+                              "PowerBI.SQExprEvaluationKind": 1,
+                              "PowerBI.SQExprTextOperatorOption": 2
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#f0e199'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 0,
+                              "Left": {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "FACT_OPPORTUNITIES_SCORED"
+                                        }
+                                      },
+                                      "Property": "PROBABILITY_BAND"
+                                    }
+                                  },
+                                  "Function": 3
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "'HIGH'"
+                                }
+                              }
+                            },
+                            "Annotations": {
+                              "PowerBI.SQExprEvaluationKind": 1,
+                              "PowerBI.SQExprTextOperatorOption": 2
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#0BF574'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "FACT_OPPORTUNITIES_SCORED.PROBABILITY_BAND"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
