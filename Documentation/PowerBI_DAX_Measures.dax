@@ -268,3 +268,71 @@ Actual Closed Revenue =
 // Useful as a KPI card (> 3x is healthy pipeline coverage)
 Pipeline Coverage =
     DIVIDE( [Weighted Pipeline], [Actual Closed Revenue] )
+
+
+// ── PAGE 7: LLM Deal Intelligence ─────────────────────────────────────────────
+// These measures read from the LLM_PREDICTIONS table.
+// LLM_PREDICTIONS joins to fact_opportunities_scored on opportunity_id.
+
+// LLM probability for the deal selected in the slicer
+LLM Selected Deal Probability =
+    IF(
+        HASONEVALUE( 'LLM_PREDICTIONS'[OPPORTUNITY_ID] ),
+        SELECTEDVALUE( 'LLM_PREDICTIONS'[LLM_WIN_PROBABILITY] ),
+        BLANK()
+    )
+
+// LLM band (HIGH / MEDIUM / LOW) for the selected deal
+LLM Selected Deal Band =
+    IF(
+        HASONEVALUE( 'LLM_PREDICTIONS'[OPPORTUNITY_ID] ),
+        SELECTEDVALUE( 'LLM_PREDICTIONS'[LLM_PROBABILITY_BAND] ),
+        BLANK()
+    )
+
+// LLM natural language reasoning for the selected deal
+// Bind this to a Card visual — it will show the full paragraph
+LLM Selected Deal Reasoning =
+    IF(
+        HASONEVALUE( 'LLM_PREDICTIONS'[OPPORTUNITY_ID] ),
+        SELECTEDVALUE( 'LLM_PREDICTIONS'[LLM_REASONING] ),
+        "Select a deal above"
+    )
+
+// LLM-weighted pipeline value (same concept as Weighted Pipeline but using LLM probabilities)
+// Requires the relationship: LLM_PREDICTIONS -> fact_opportunities_scored on opportunity_id
+LLM Weighted Pipeline =
+    SUMX(
+        'LLM_PREDICTIONS',
+        RELATED( 'fact_opportunities_scored'[amount] ) * 'LLM_PREDICTIONS'[LLM_WIN_PROBABILITY]
+    )
+
+
+// ── PAGE 8: Model Agreement Dashboard ────────────────────────────────────────
+// These measures read from MODEL_COMPARISON table.
+// MODEL_COMPARISON has one row per open deal with both XGB and LLM scores.
+
+// Percentage of deals where XGBoost and LLM are in the same probability band
+Model Agreement Rate =
+    DIVIDE(
+        CALCULATE(
+            COUNTROWS( 'MODEL_COMPARISON' ),
+            'MODEL_COMPARISON'[MODELS_AGREE] = TRUE
+        ),
+        COUNTROWS( 'MODEL_COMPARISON' )
+    )
+
+// Count of deals where the two models differ by more than 0.25
+High Disagreement Deals =
+    CALCULATE(
+        COUNTROWS( 'MODEL_COMPARISON' ),
+        'MODEL_COMPARISON'[DISAGREEMENT_FLAG] = TRUE
+    )
+
+// Average probability delta across all compared deals
+Avg Model Delta =
+    AVERAGE( 'MODEL_COMPARISON'[PROBABILITY_DELTA] )
+
+// Max delta — the single biggest disagreement in the dataset
+Max Model Delta =
+    MAX( 'MODEL_COMPARISON'[PROBABILITY_DELTA] )

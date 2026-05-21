@@ -1,0 +1,179 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "a4399e1e5031c82f5210",
+  "position": {
+    "x": 0,
+    "y": 542.72867476160479,
+    "z": 3001,
+    "height": 165.4877598453418,
+    "width": 1279.4161218150618,
+    "tabOrder": 3001
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "OPPORTUNITY_ID"
+                }
+              },
+              "queryRef": "MODEL_COMPARISON.OPPORTUNITY_ID",
+              "nativeQueryRef": "OPPORTUNITY_ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "XGB_WIN_PROBABILITY"
+                }
+              },
+              "queryRef": "Sum(MODEL_COMPARISON.XGB_WIN_PROBABILITY)",
+              "nativeQueryRef": "XGB_WIN_PROBABILITY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "XGB_PROBABILITY_BAND"
+                }
+              },
+              "queryRef": "MODEL_COMPARISON.XGB_PROBABILITY_BAND",
+              "nativeQueryRef": "XGB_PROBABILITY_BAND"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "LLM_WIN_PROBABILITY"
+                }
+              },
+              "queryRef": "Sum(MODEL_COMPARISON.LLM_WIN_PROBABILITY)",
+              "nativeQueryRef": "LLM_WIN_PROBABILITY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "LLM_PROBABILITY_BAND"
+                }
+              },
+              "queryRef": "MODEL_COMPARISON.LLM_PROBABILITY_BAND",
+              "nativeQueryRef": "LLM_PROBABILITY_BAND"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "PROBABILITY_DELTA"
+                }
+              },
+              "queryRef": "Sum(MODEL_COMPARISON.PROBABILITY_DELTA)",
+              "nativeQueryRef": "PROBABILITY_DELTA"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "MODELS_AGREE"
+                }
+              },
+              "queryRef": "MODEL_COMPARISON.MODELS_AGREE",
+              "nativeQueryRef": "MODELS_AGREE"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'All Deals Model Comparision'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'BoldHeader'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
