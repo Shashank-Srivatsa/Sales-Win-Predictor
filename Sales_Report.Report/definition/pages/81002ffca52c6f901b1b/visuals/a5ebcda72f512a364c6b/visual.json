@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "a5ebcda72f512a364c6b",
+  "position": {
+    "x": 9.7153700189753316,
+    "y": 0,
+    "z": 0,
+    "height": 80.961416824794441,
+    "width": 1271.0942441492728,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "MODEL AGREEMENT DASHBOARD",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "28pt",
+                      "color": "#ffffff"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#12839F'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

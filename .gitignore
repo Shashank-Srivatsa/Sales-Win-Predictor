@@ -45,3 +45,6 @@ Thumbs.db
 
 # Power BI
 Sales_Report.SemanticModel/
+
+# LLM-RAG — ChromaDB vector store (can be 100MB+, rebuilt by 01_build_vector_store.py)
+llm/chroma_db/

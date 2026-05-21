@@ -1,0 +1,311 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "8e367ddd9fa500251eab",
+  "position": {
+    "x": 841.99873497786211,
+    "y": 250.98039215686276,
+    "z": 3000,
+    "height": 265.55344718532575,
+    "width": 438.81087919038583,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "DISAGREEMENT_FLAG"
+                }
+              },
+              "queryRef": "MODEL_COMPARISON.DISAGREEMENT_FLAG",
+              "nativeQueryRef": "DISAGREEMENT_FLAG"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MODEL_COMPARISON"
+                        }
+                      },
+                      "Property": "OPPORTUNITY_ID"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(MODEL_COMPARISON.OPPORTUNITY_ID)",
+              "nativeQueryRef": "First OPPORTUNITY_ID"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "XGB_WIN_PROBABILITY"
+                }
+              },
+              "queryRef": "Sum(MODEL_COMPARISON.XGB_WIN_PROBABILITY)",
+              "nativeQueryRef": "XGB_WIN_PROBABILITY",
+              "active": true,
+              "format": "0.0%;-0.0%;0.0%"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "LLM_WIN_PROBABILITY"
+                }
+              },
+              "queryRef": "Sum(MODEL_COMPARISON.LLM_WIN_PROBABILITY)",
+              "nativeQueryRef": "LLM_WIN_PROBABILITY"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "colorByCategory": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "markers": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "borderShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "end": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "end": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "bubbles": [
+        {
+          "properties": {
+            "markerShape": {
+              "expr": {
+                "Literal": {
+                  "Value": "'circle'"
+                }
+              }
+            },
+            "bubbleSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "-15L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MODEL_COMPARISON"
+                          }
+                        },
+                        "Property": "DISAGREEMENT_FLAG"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "true"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "trend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "displayName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Trend line 1'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'XGBoost vs LLM - All Open Deals'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

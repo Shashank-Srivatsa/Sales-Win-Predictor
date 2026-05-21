@@ -1,0 +1,609 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "03e39af5504b863f82a7",
+  "position": {
+    "x": 0,
+    "y": 240.22416751743165,
+    "z": 2000,
+    "height": 302.50450724417317,
+    "width": 818.54160783717452,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "OPPORTUNITY_ID"
+                }
+              },
+              "queryRef": "MODEL_COMPARISON.OPPORTUNITY_ID",
+              "nativeQueryRef": "Deal Id",
+              "displayName": "Deal Id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "XGB_WIN_PROBABILITY"
+                }
+              },
+              "queryRef": "Sum(MODEL_COMPARISON.XGB_WIN_PROBABILITY)",
+              "nativeQueryRef": "XGBoost Probability",
+              "displayName": "XGBoost Probability",
+              "format": " 0.0%"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "LLM_WIN_PROBABILITY"
+                }
+              },
+              "queryRef": "Sum(MODEL_COMPARISON.LLM_WIN_PROBABILITY)",
+              "nativeQueryRef": "LLM Probability",
+              "displayName": "LLM Probability",
+              "format": " 0.0%"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "PROBABILITY_DELTA"
+                }
+              },
+              "queryRef": "Sum(MODEL_COMPARISON.PROBABILITY_DELTA)",
+              "nativeQueryRef": "PROBABILITY_DELTA1",
+              "displayName": "Delta",
+              "format": " 0.0%"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "HIGHER_CONFIDENCE_MODEL"
+                }
+              },
+              "queryRef": "MODEL_COMPARISON.HIGHER_CONFIDENCE_MODEL",
+              "nativeQueryRef": "Higher Confidence",
+              "displayName": "Higher Confidence"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MODEL_COMPARISON"
+                    }
+                  },
+                  "Property": "LLM_REASONING"
+                }
+              },
+              "queryRef": "MODEL_COMPARISON.LLM_REASONING",
+              "nativeQueryRef": "LLM Reasoning",
+              "displayName": "LLM Reasoning"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "MODEL_COMPARISON"
+                  }
+                },
+                "Property": "PROBABILITY_DELTA"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "438.2510539262933D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MODEL_COMPARISON.LLM_REASONING"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.11852938220082D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MODEL_COMPARISON.HIGHER_CONFIDENCE_MODEL"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.54393460030332D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(MODEL_COMPARISON.XGB_WIN_PROBABILITY)"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Aggregation": {
+                          "Expression": {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "MODEL_COMPARISON"
+                                }
+                              },
+                              "Property": "XGB_WIN_PROBABILITY"
+                            }
+                          },
+                          "Function": 0
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#D64550'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#02FD66'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(MODEL_COMPARISON.XGB_WIN_PROBABILITY)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Aggregation": {
+                          "Expression": {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "MODEL_COMPARISON"
+                                }
+                              },
+                              "Property": "LLM_WIN_PROBABILITY"
+                            }
+                          },
+                          "Function": 0
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#FFFFFF'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#FFFFFF'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(MODEL_COMPARISON.LLM_WIN_PROBABILITY)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 2,
+                              "Left": {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "MODEL_COMPARISON"
+                                        }
+                                      },
+                                      "Property": "PROBABILITY_DELTA"
+                                    }
+                                  },
+                                  "Function": 0
+                                }
+                              },
+                              "Right": {
+                                "RangePercent": {
+                                  "Min": {
+                                    "ScopedEval": {
+                                      "Expression": {
+                                        "Aggregation": {
+                                          "Expression": {
+                                            "ScopedEval": {
+                                              "Expression": {
+                                                "Aggregation": {
+                                                  "Expression": {
+                                                    "Column": {
+                                                      "Expression": {
+                                                        "SourceRef": {
+                                                          "Entity": "MODEL_COMPARISON"
+                                                        }
+                                                      },
+                                                      "Property": "PROBABILITY_DELTA"
+                                                    }
+                                                  },
+                                                  "Function": 0
+                                                }
+                                              },
+                                              "Scope": [
+                                                {
+                                                  "AllRolesRef": {}
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "Function": 3
+                                        }
+                                      },
+                                      "Scope": []
+                                    }
+                                  },
+                                  "Max": {
+                                    "ScopedEval": {
+                                      "Expression": {
+                                        "Aggregation": {
+                                          "Expression": {
+                                            "ScopedEval": {
+                                              "Expression": {
+                                                "Aggregation": {
+                                                  "Expression": {
+                                                    "Column": {
+                                                      "Expression": {
+                                                        "SourceRef": {
+                                                          "Entity": "MODEL_COMPARISON"
+                                                        }
+                                                      },
+                                                      "Property": "PROBABILITY_DELTA"
+                                                    }
+                                                  },
+                                                  "Function": 0
+                                                }
+                                              },
+                                              "Scope": [
+                                                {
+                                                  "AllRolesRef": {}
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "Function": 4
+                                        }
+                                      },
+                                      "Scope": []
+                                    }
+                                  },
+                                  "Percent": 0.25
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#E74C3C'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "MODEL_COMPARISON"
+                                        }
+                                      },
+                                      "Property": "PROBABILITY_DELTA"
+                                    }
+                                  },
+                                  "Function": 0
+                                }
+                              },
+                              "Right": {
+                                "RangePercent": {
+                                  "Min": {
+                                    "ScopedEval": {
+                                      "Expression": {
+                                        "Aggregation": {
+                                          "Expression": {
+                                            "ScopedEval": {
+                                              "Expression": {
+                                                "Aggregation": {
+                                                  "Expression": {
+                                                    "Column": {
+                                                      "Expression": {
+                                                        "SourceRef": {
+                                                          "Entity": "MODEL_COMPARISON"
+                                                        }
+                                                      },
+                                                      "Property": "PROBABILITY_DELTA"
+                                                    }
+                                                  },
+                                                  "Function": 0
+                                                }
+                                              },
+                                              "Scope": [
+                                                {
+                                                  "AllRolesRef": {}
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "Function": 3
+                                        }
+                                      },
+                                      "Scope": []
+                                    }
+                                  },
+                                  "Max": {
+                                    "ScopedEval": {
+                                      "Expression": {
+                                        "Aggregation": {
+                                          "Expression": {
+                                            "ScopedEval": {
+                                              "Expression": {
+                                                "Aggregation": {
+                                                  "Expression": {
+                                                    "Column": {
+                                                      "Expression": {
+                                                        "SourceRef": {
+                                                          "Entity": "MODEL_COMPARISON"
+                                                        }
+                                                      },
+                                                      "Property": "PROBABILITY_DELTA"
+                                                    }
+                                                  },
+                                                  "Function": 0
+                                                }
+                                              },
+                                              "Scope": [
+                                                {
+                                                  "AllRolesRef": {}
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "Function": 4
+                                        }
+                                      },
+                                      "Scope": []
+                                    }
+                                  },
+                                  "Percent": 0.25
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#FFFFFF'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(MODEL_COMPARISON.PROBABILITY_DELTA)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'BoldHeader'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3d0a8bfb9640b551055b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MODEL_COMPARISON"
+              }
+            },
+            "Property": "DISAGREEMENT_FLAG"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "MODEL_COMPARISON",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "m"
+                          }
+                        },
+                        "Property": "DISAGREEMENT_FLAG"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  }
+}
