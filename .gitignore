@@ -52,4 +52,5 @@ llm/chroma_db/
 GenerateCRMData.py
 GenerateCRMDataNb.ipynb
 
-.claude/
+.claude\
+.claude\settings.local.json
