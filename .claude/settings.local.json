@@ -9,7 +9,17 @@
       "Bash(python ml/02_train.py)",
       "Bash(python ml/03_evaluate.py)",
       "Bash(python ml/06_write_predictions.py)",
-      "Bash(dbt run *)"
+      "Bash(dbt run *)",
+      "Bash(pip install *)",
+      "Bash(python -c \"import chromadb; print\\(chromadb.__version__\\)\")",
+      "Bash(python -c \"import sentence_transformers; print\\(sentence_transformers.__version__\\)\")",
+      "Bash(python -c \"import ollama; print\\(ollama.__version__\\)\")",
+      "Bash(python -c \"import sentence_transformers; print\\('sentence-transformers', sentence_transformers.__version__\\)\")",
+      "Bash(python -c \"import chromadb; print\\('chromadb', chromadb.__version__\\)\")",
+      "Bash(python -c \"import ollama; print\\('ollama', ollama.__version__\\)\")",
+      "Bash(git fetch *)",
+      "Bash(git checkout *)",
+      "Bash(git pull *)"
     ]
   }
 }
