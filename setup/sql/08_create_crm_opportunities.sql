@@ -27,7 +27,7 @@ CREATE OR REPLACE TABLE crm_opportunities (
     lost_reason VARCHAR(255),
     is_renewal INTEGER,
     fiscal_year INTEGER,
-    fiscal_quarter INTEGER,
+    fiscal_quarter VARCHAR(50),
     is_open INTEGER,
     PRIMARY KEY (opportunity_id),
     FOREIGN KEY (account_id) REFERENCES crm_accounts(account_id),

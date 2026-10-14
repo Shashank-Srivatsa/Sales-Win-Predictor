@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 # Load SNOWFLAKE_ACCOUNT, SNOWFLAKE_USER, SNOWFLAKE_PASSWORD from the project .env file.
 # os.path.dirname(__file__) = the ml/ folder; ../  goes one level up to the project root.
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
+os.environ["MLFLOW_ALLOW_FILE_STORE"] = "true"
 
 # ── Snowflake connection ──────────────────────────────────────────────────────
 # The ML schema holds our feature table and predictions.

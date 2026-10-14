@@ -94,7 +94,6 @@ def create_stage_and_format(conn):
             COMPRESSION = 'GZIP'
             FIELD_DELIMITER = ','
             RECORD_DELIMITER = '\\n'
-            SKIP_HEADER = 1
             FIELD_OPTIONALLY_ENCLOSED_BY = '"'
             NULL_IF = ('NULL', '')
             ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE
@@ -220,7 +219,7 @@ def create_tables_and_load_data(conn):
                 lost_reason VARCHAR(255),
                 is_renewal INTEGER,
                 fiscal_year INTEGER,
-                fiscal_quarter INTEGER,
+                fiscal_quarter VARCHAR(50),
                 is_open INTEGER
             )
         """,
@@ -303,7 +302,7 @@ def create_tables_and_load_data(conn):
                 COPY INTO {table_name}
                 FROM @crm_stage/{csv_file}
                 FILE_FORMAT = (
-                    FORMAT_NAME = 'csv_format'
+                    FORMAT_NAME = 'csv_format',
                     PARSE_HEADER = TRUE
                 )
                 MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE

@@ -114,6 +114,15 @@ def compare_models():
     conn.close()
     log.info(f"Written {len(output_df):,} rows to SALES_WIN_DB.ML.{COMPARISON_TABLE}")
 
+    if disagree_count > 0:
+        log.info(f"Triggering Agent 2 (Deal Strategist) for {disagree_count} flagged disagreement deals...")
+        try:
+            from agents.deal_strategist import DealStrategistAgent
+            strategist = DealStrategistAgent()
+            strategist.analyze_all_flagged_deals()
+        except Exception as e:
+            log.warning(f"Could not trigger Deal Strategist automatically: {e}")
+
 
 if __name__ == "__main__":
     compare_models()
