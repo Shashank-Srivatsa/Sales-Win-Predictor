@@ -6,9 +6,7 @@ Given one deal (as a dict from ML_DEAL_FEATURES), returns:
   - llm_reasoning (string)
   - similar_deals_used (list of opportunity_ids retrieved)
 """
-import re, os, sys
 import chromadb
-import ollama
 from sentence_transformers import SentenceTransformer
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -125,25 +123,30 @@ def predict_single(deal_row: dict) -> dict:
         new_deal_text=deal_text,
     )
 
-    # ── Step 4: Call Ollama (local LLM) ──────────────────────────────────────
+    # ── Step 4: Call Ollama (local LLM via direct HTTP) ─────────────────────
     try:
-        client   = ollama.Client(host=OLLAMA_HOST)
-        response = client.generate(
-            model=OLLAMA_MODEL,
-            prompt=prompt,
-            options={
+        import requests
+        url = f"{OLLAMA_HOST}/api/generate"
+        payload = {
+            "model": OLLAMA_MODEL,
+            "prompt": prompt,
+            "stream": False,
+            "options": {
                 "temperature": 0.1,
                 "num_predict": 200,
-                "stop": ["\n\n\n"],
-            },
-        )
+                "stop": ["\n\n\n"]
+            }
+        }
+        res = requests.post(url, json=payload, timeout=30)
+        if res.status_code == 200:
+            response_text = res.json().get("response", "")
+        else:
+            raise RuntimeError(f"Ollama returned HTTP {res.status_code}: {res.text}")
     except Exception as e:
         raise RuntimeError(
             f"Ollama is not reachable at {OLLAMA_HOST}. "
-            f"Start it with: ollama serve\nOriginal error: {e}"
+            f"Ensure Ollama app is running on your PC.\nOriginal error: {e}"
         ) from e
-
-    response_text = response["response"]
 
     # ── Step 5: Parse response ────────────────────────────────────────────────
     probability, reasoning = _parse_response(response_text)

@@ -1,5 +1,5 @@
 WITH source AS (
-    SELECT * FROM {{ source('bronze', 'CRM_OPPURTUNITY_LINE_ITEMS') }}
+    SELECT * FROM {{ source('bronze', 'CRM_OPPORTUNITY_LINE_ITEMS') }}
 ),
 
 deduped AS (
